@@ -1,0 +1,61 @@
+@import "../common/mixins";
+@import "../common/variables";
+
+.works-section {
+    background-image: url(../../Images/works.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 1200px;
+    @include phone {
+        height: 2000px;
+        margin-top: 650px;
+        padding-top: 100px;
+    }
+    @include tablet {
+        height: 1200px;
+        padding-top: 100px;
+    }
+}
+
+.works-title {
+    width: 60%;
+    color: $black;
+    text-align: center;
+    margin: auto;
+    h2 {
+        font-family: $title;
+        font-size: 60px;
+        margin: 0;
+    }
+    p {
+        font-family: $text;
+        font-size: 20px;
+        margin: 20px 0 20px 0;
+    }
+    @include phone {
+        width: 80%;
+        font-size: 30px;
+    }
+}
+
+
+.works-container {
+    background-position: center;
+    background-size: cover;
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: auto;
+    margin-top: 100px;
+    @include phone {
+        width: 80%;
+        margin-top: 50px;
+        justify-content: center;
+    }
+    @include tablet {
+        width: 70%;
+        justify-content: space-between;
+    }
+}

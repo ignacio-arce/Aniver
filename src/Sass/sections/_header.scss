@@ -1,0 +1,110 @@
+@import "../common/mixins";
+@import "../common/variables";
+
+
+header {
+    background-color: $black;
+    width: 98%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 20px;
+    padding: 0 50px 0 15px;
+    position: fixed;
+    z-index: 999;
+}
+
+.header-title {
+    width: 60%;
+}
+
+.logo {
+    width: 70px;
+    height: 40px;
+    padding: 10px 0 10px 0;
+}
+
+.aniver-title {
+    width: 200px;
+    height: 40px;
+    padding: 10px 0 10px 10px;
+    @include phone {
+        display: none;
+    }
+}
+
+.menu-container {
+    width: 35px;
+    height: 135px;
+    padding: 10px 0 10px 0;
+    nav {
+        ul {
+            display: none;
+        }
+    }
+    &:hover {
+        nav {
+            ul {
+                display: block;
+            }
+        }
+    }
+    @include phone {
+        margin-right: 20px;
+    }
+    @include tablet {
+        margin-right: 15px;
+    }
+}
+
+.menu-button {
+    background-color: $black;
+    width: 35px;
+    height: 35px;
+    border: 1px solid $white;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+    &:hover {
+        border: 1.2px solid $white;
+        box-shadow: 0px 0px 5px 3px rgb(78, 78, 78);
+    }
+}
+
+.faBars {
+    color: $white;
+    font-size: 17px;
+}
+
+.menu-nav {
+    background-color: #111111a1;
+    width: 200px;
+    position: relative;
+    display: block;
+    left: -150px;
+    ul {
+        list-style: none;
+        margin-top: 15px;
+        position: relative;
+        padding: 0;
+        li {
+            width: 200px;
+            height: 60px;
+            line-height: 60px;
+            cursor: pointer;
+            &:hover {
+                background-color: #11111160;
+            }
+            &:active {
+                background-color: $green-primary;
+            }
+        }
+    }
+}
+
+.link-nav {
+    color: $white;
+    font-size: 16px;
+    text-decoration: none;
+    padding: 22px 150px 22px 20px;
+}

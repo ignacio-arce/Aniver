@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" height="512px" viewBox="0 0 512 512" width="512px" class=""><g><script xmlns="" id="metastreaminitscript" class="active-path" style="">(function() {
+    document.getElementById('metastreaminitscript').remove()
+
+    const INIT_TIMEOUT = 5e3
+    const isFirefox = navigator.userAgent.toLowerCase().includes('firefox')
+
+    //=========================================================================
+    // document.createElement proxy
+    //=========================================================================
+
+    window.__metastreamMediaElements = new Set()
+
+    // Proxy document.createElement to trap media elements created in-memory
+    const origCreateElement = document.createElement
+    const proxyCreateElement = function() {
+      const element = origCreateElement.apply(document, arguments)
+      if (window.__metastreamMediaElements &amp;&amp; element instanceof HTMLMediaElement) {
+        window.__metastreamMediaElements.add(element)
+      }
+      return element
+    }
+    proxyCreateElement.toString = origCreateElement.toString.bind(origCreateElement)
+    document.createElement = proxyCreateElement
+
+    setTimeout(() =&gt; {
+      if (window.__metastreamMediaElements) {
+        window.__metastreamMediaElements.clear()
+        window.__metastreamMediaElements = undefined
+      }
+    }, INIT_TIMEOUT)
+
+    //=========================================================================
+    // navigator.mediaSession proxy (Firefox)
+    //=========================================================================
+
+    if (isFirefox) {
+      // stub out MediaSession API until Firefox supports this natively
+      if (!navigator.mediaSession) {
+        const noop = () =&gt; {}
+        const mediaSessionStub = {
+          __installedByMetastreamRemote__: true,
+          setActionHandler: noop
+        }
+        Object.defineProperty(window.navigator, 'mediaSession', {
+          value: mediaSessionStub,
+          enumerable: false,
+          writable: true
+        })
+
+        function MediaMetadata(metadata) {
+          Object.assign(this, metadata)
+        }
+        window.MediaMetadata = MediaMetadata
+      }
+
+      const { mediaSession } = navigator
+
+      // Capture action handlers for player.js proxy
+      mediaSession._handlers = {}
+
+      const _setActionHandler = mediaSession.setActionHandler
+      mediaSession.setActionHandler = function(name, handler) {
+        mediaSession._handlers[name] = handler
+        _setActionHandler.apply(mediaSession, arguments)
+      }
+    }
+
+    //=========================================================================
+    // document.domain fix (Firefox)
+    //=========================================================================
+
+    if (isFirefox) {
+      const domains = ['twitch.tv', 'crunchyroll.com']
+
+      // Fix for setting document.domain in sandboxed iframe
+      try {
+        const { domain } = document
+        if (domain &amp;&amp; domains.some(d =&gt; domain.includes(d))) {
+          Object.defineProperty(document, 'domain', {
+            value: domain,
+            writable: true
+          })
+        }
+      } catch (e) {}
+    }
+
+    //=========================================================================
+    // Inline script embed prevention fix
+    //=========================================================================
+
+    const observeScripts = () =&gt; {
+      const scriptSnippets = [
+        { code: 'window.top !== window.self', replacement: 'false' },
+        { code: 'self == top', replacement: 'true' },
+        { code: 'top.location != window.location', replacement: 'false' }
+      ]
+
+      const getAddedScripts = mutationList =&gt;
+        mutationList.reduce((scripts, mutation) =&gt; {
+          if (mutation.type !== 'childList') return scripts
+          const inlineScripts = Array.from(mutation.addedNodes).filter(
+            node =&gt; node instanceof HTMLScriptElement &amp;&amp; node.innerHTML.length &gt; 0
+          )
+          return inlineScripts.length &gt; 0 ? [...scripts, ...inlineScripts] : scripts
+        }, [])
+
+      // Modifies inline scripts to allow embedding content in iframe
+      const inlineScriptModifier = mutationsList =&gt; {
+        const scripts = getAddedScripts(mutationsList)
+        for (let script of scripts) {
+          for (let snippet of scriptSnippets) {
+            if (script.innerHTML.includes(snippet.code)) {
+              script.innerHTML = script.innerHTML.split(snippet.code).join(snippet.replacement)
+            }
+          }
+        }
+      }
+
+      const observer = new MutationObserver(inlineScriptModifier)
+      observer.observe(document.documentElement, { childList: true, subtree: true })
+
+      // Stop watching for changes after we finish loading
+      window.addEventListener('load', () =&gt; observer.disconnect())
+    }
+
+    observeScripts()
+  }());</script><path d="m497 300h-15v-30h-90v30h-15c-8.289062 0-15 6.710938-15 15s6.710938 15 15 15h120c8.289062 0 15-6.710938 15-15s-6.710938-15-15-15zm0 0" data-original="#000000" class="active-path" fill="#FFFFFF"/><path d="m482 436c0-5.15625-.863281-10.210938-3.660156-17.386719l-28.289063-50.996093c-5.300781-9.402344-20.800781-9.402344-26.101562 0l-29.371094 53.355468c-1.714844 4.816406-2.578125 9.871094-2.578125 15.027344 0 24.8125 20.1875 45 45 45s45-20.1875 45-45zm0 0" data-original="#000000" class="active-path" fill="#FFFFFF"/><path d="m268.238281 60h47.761719c8.289062 0 15-6.710938 15-15s-6.710938-15-15-15h-47.761719c-6.214843-17.421875-22.707031-30-42.238281-30s-36.023438 12.578125-42.238281 30h-47.761719c-8.289062 0-15 6.710938-15 15s6.710938 15 15 15h47.761719c4.535156 12.707031 14.53125 22.703125 27.238281 27.238281v32.761719h-15c-24.8125 0-45 20.1875-45 45v60c0 24.8125 20.1875 45 45 45h60c19.554688 0 36.238281-12.539062 42.4375-30h182.148438c-8.867188-81.335938-90.765626-86.179688-185.210938-117.6875-4.585938-1.535156-9.375-2.3125-14.238281-2.3125h-40.136719v-32.761719c12.707031-4.535156 22.703125-14.53125 27.238281-27.238281zm0 0" data-original="#000000" class="active-path" fill="#FFFFFF"/><path d="m15 512h61c8.289062 0 15-6.710938 15-15v-242c0-8.277344 6.722656-15 15-15h16.519531c-.992187-4.847656-1.519531-9.863281-1.519531-15v-60c0-5.136719.527344-10.152344 1.519531-15h-16.519531c-57.890625 0-106 47.109375-106 105v242c0 8.289062 6.710938 15 15 15zm0 0" data-original="#000000" class="active-path" fill="#FFFFFF"/></g> </svg>
