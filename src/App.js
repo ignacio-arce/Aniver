@@ -4,7 +4,7 @@ import Hero from "./Sections/Hero";
 import AboutUs from "./Sections/About-Us";
 import Contact from './Sections/Contact';
 import OurWorks from './Sections/OurWorks';
-//import Footer from './Sections/Footer';
+import Footer from './Sections/Footer';
 import './Sass/common/all.css';
 
 function App() {
@@ -14,7 +14,8 @@ function App() {
       <Hero />
       <AboutUs />
       <OurWorks />
-      <Contact />      
+      <Contact /> 
+      <Footer />     
     </div>
   );
 }

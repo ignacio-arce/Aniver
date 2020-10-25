@@ -1,20 +1,27 @@
 @import "../common/mixins";
 @import "../common/variables";
 
-
 #footer {
     background-color: $black;
     width: 100%;
-    height: 300px;
+    height: 50vh;
     color: $white;
     padding-top: 50px;
     padding-bottom: 50px;
+    box-sizing: border-box;
+    @include phone {
+        height: 1000px;
+    }
 }
 
 .footer-container {
     width: 90%;
     display: flex;
     margin: auto;
+    box-sizing: border-box;
+    @include phone {
+        flex-direction: column;
+    }
 }
 /* Primera columna */
 
@@ -22,42 +29,45 @@
     width: 30%;
     margin: 20px;
     text-align: center;
-}
-
-.aniver-footer {
-    width: 300px;
-    height: 60px;
-}
-
-.subtitle-footer {
-    font-family: $title;
-    font-size: 20px;
-    color: $blue-secondary;
+    .aniver-footer {
+        width: 20rem;
+        height: 4rem;
+    }
+    .subtitle-footer {
+        font-family: $title;
+        font-size: 20px;
+        color: $blue-secondary;
+    }
+    @include phone {
+        width: 100%;
+        margin: 0;
+    }
 }
 
 .links-button {
     background-color: $blue-primary;
     width: 50px;
     height: 50px;
-    margin: 30px;
+    margin: 1rem;
     border: 3px solid rgb(3, 90, 138);
     border-radius: 50px;
     &:hover {
         box-shadow: 0px 0px 10px 2px rgba(92, 92, 92, 0.75);
     }
+    .icon-footer {
+        width: 20px;
+        margin: 7px 3px 3px 4px;
+    }
 }
 
-.icon-footer {
-    width: 20px;
-    margin: 7px 3px 3px 4px;
-}
 
 /* Segunda columna */
 
 .footer-nav {
     width: 30%;
-    margin: 20px;
+    margin: 1rem;
     text-align: center;
+    box-sizing: border-box;
     ul {
         list-style: none;
         li {
@@ -74,12 +84,20 @@
             }
         }
     }
+    @include phone {
+        width: 100%;
+        margin: 0;
+        ul {
+            padding: 0;
+        }
+    }
 }
 
 /* Tercera columna */
 
 .map-container {
     color: $white;
+    text-align: center;
 }
 
 .desarrollo-box {

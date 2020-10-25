@@ -11,9 +11,11 @@ const Contact = props => {
                 <div className="form-container">
                     <div className="wsp-box">
                         <h3>Contactate a través de nuestro Whatsapp</h3>
-                        <button className="wsp-button">
-                            <img className="whatsapp-contact" src={whatsapp} alt=""/>
-                        </button>
+                        <a href="https://api.whatsapp.com/send?phone=1162018490&text=Hola, tengo una consulta">
+                            <button className="wsp-button">
+                                <img className="whatsapp-contact" src={whatsapp} alt="" />
+                            </button>
+                        </a>
                     </div>
 
                     <h3>o a través de nuestro email</h3>

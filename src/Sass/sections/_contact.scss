@@ -107,6 +107,14 @@
     border: 3px solid #5c8b3c;
     border-radius: 10px;
     cursor: pointer;
+    a {
+        width: 250px;
+        height: 50px;
+    }
+    .whatsapp-contact {
+        width: 2rem;
+        margin-top: 5px;
+    }
     &:hover {
         box-shadow: 0px 0px 10px 2px rgba(92, 92, 92, 0.75);
     }
@@ -116,10 +124,7 @@
     }
 }
 
-.whatsapp-contact {
-    width: 30px;
-    margin-top: 5px;
-}
+
 
 #contact-form {
     width: 50%;

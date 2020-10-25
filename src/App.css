@@ -440,6 +440,16 @@
   cursor: pointer;
 }
 
+.wsp-button a {
+  width: 250px;
+  height: 50px;
+}
+
+.wsp-button .whatsapp-contact {
+  width: 2rem;
+  margin-top: 5px;
+}
+
 .wsp-button:hover {
   -webkit-box-shadow: 0px 0px 10px 2px rgba(92, 92, 92, 0.75);
           box-shadow: 0px 0px 10px 2px rgba(92, 92, 92, 0.75);
@@ -449,11 +459,6 @@
   color: #79B650;
   -webkit-box-shadow: 0px 0px 10px 2px rgba(92, 92, 92, 0.75);
           box-shadow: 0px 0px 10px 2px rgba(92, 92, 92, 0.75);
-}
-
-.whatsapp-contact {
-  width: 30px;
-  margin-top: 5px;
 }
 
 #contact-form {
@@ -569,10 +574,18 @@
 #footer {
   background-color: #111111;
   width: 100%;
-  height: 300px;
+  height: 50vh;
   color: #FFFFFF;
   padding-top: 50px;
   padding-bottom: 50px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+@media (max-width: 767px) {
+  #footer {
+    height: 1000px;
+  }
 }
 
 .footer-container {
@@ -581,6 +594,17 @@
   display: -ms-flexbox;
   display: flex;
   margin: auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+@media (max-width: 767px) {
+  .footer-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 
 /* Primera columna */
@@ -590,22 +614,29 @@
   text-align: center;
 }
 
-.aniver-footer {
-  width: 300px;
-  height: 60px;
+#title-footer .aniver-footer {
+  width: 20rem;
+  height: 4rem;
 }
 
-.subtitle-footer {
+#title-footer .subtitle-footer {
   font-family: "Montserrat", sans-serif;
   font-size: 20px;
   color: #009cf2;
+}
+
+@media (max-width: 767px) {
+  #title-footer {
+    width: 100%;
+    margin: 0;
+  }
 }
 
 .links-button {
   background-color: #0076B7;
   width: 50px;
   height: 50px;
-  margin: 30px;
+  margin: 1rem;
   border: 3px solid #035a8a;
   border-radius: 50px;
 }
@@ -615,7 +646,7 @@
           box-shadow: 0px 0px 10px 2px rgba(92, 92, 92, 0.75);
 }
 
-.icon-footer {
+.links-button .icon-footer {
   width: 20px;
   margin: 7px 3px 3px 4px;
 }
@@ -623,8 +654,10 @@
 /* Segunda columna */
 .footer-nav {
   width: 30%;
-  margin: 20px;
+  margin: 1rem;
   text-align: center;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .footer-nav ul {
@@ -648,9 +681,20 @@
   text-decoration: underline;
 }
 
+@media (max-width: 767px) {
+  .footer-nav {
+    width: 100%;
+    margin: 0;
+  }
+  .footer-nav ul {
+    padding: 0;
+  }
+}
+
 /* Tercera columna */
 .map-container {
   color: #FFFFFF;
+  text-align: center;
 }
 
 .desarrollo-box {
