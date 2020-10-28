@@ -12,7 +12,7 @@ const Contact = () => {
                 <div className="form-container">
                     <div className="wsp-box">
                         <h3>Contactate a través de nuestro Whatsapp</h3>
-                        <a href="https://api.whatsapp.com/send?phone=1162018490&text=Hola, tengo una consulta">
+                        <a href="https://api.whatsapp.com/send?phone=numero&text=Hola, tengo una consulta">
                             <button className="wsp-button">
                                 <img className="whatsapp-contact" src={whatsapp} alt="" />
                             </button>
