@@ -1,8 +1,9 @@
-import React from 'react';
+import React  from 'react';
 import contact from "../Images/contact.jpg";
 import whatsapp from "../Images/icons/whatsapp.svg";
 
-const Contact = props => {
+
+const Contact = () => {
     return (
         <section id="contact">
             <h2 className="contact-title">Contáctanos</h2>
@@ -23,15 +24,15 @@ const Contact = props => {
                         <ul className="form-list">
                             <li>
                                 <label for="name">Nombre:</label>
-                                <input type="text" id="name" name="user_name" />
+                                <input type="text" id="name" name="user_name" required />
                             </li>
                             <li>
                                 <label for="mail">Correo electrónico:</label>
-                                <input type="email" id="mail" name="user_mail" />
+                                <input type="email" id="email" name="user_mail" required />
                             </li>
                             <li id="li-tablet">
                                 <label for="msg">Mensaje:</label>
-                                <textarea id="msg" name="user_message" />
+                                <textarea id="message" name="user_message" required />
                             </li>
                             <li id="li-tablet">
                                 <button type="submit" className="form-button">Enviar</button>
