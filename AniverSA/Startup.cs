@@ -52,6 +52,9 @@ namespace AniverSA
                 routes.MapRoute(
                     name: "default",
                     template: "{controller}/{action=Index}/{id?}");
+                routes.MapRoute(
+                    name: "contact_us",
+                    template: "{controller=Contact}/{action=Send}/{id?}");
             });
 
             app.UseSpa(spa =>

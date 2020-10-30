@@ -20,7 +20,7 @@ const Contact = () => {
                     </div>
 
                     <h3>o a través de nuestro email</h3>
-                    <form method="post" action="#" id="contact-form">
+                    <form method="post" action="/Contact/Send" id="contact-form">
                         <ul className="form-list">
                             <li>
                                 <label for="name">Nombre:</label>
@@ -37,7 +37,6 @@ const Contact = () => {
                             <li id="li-tablet">
                                 <button type="submit" className="form-button">Enviar</button>
                             </li>
-
                         </ul>
                     </form>
                 </div>
