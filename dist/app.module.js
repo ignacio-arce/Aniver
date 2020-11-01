@@ -21,7 +21,7 @@ AppModule = __decorate([
         imports: [
             config_1.ConfigModule.forRoot(),
             serve_static_1.ServeStaticModule.forRoot({
-                rootPath: path_1.join(__dirname, '.', 'build'),
+                rootPath: path_1.join(__dirname, '..', 'build'),
             }),
         ],
         controllers: [app_controller_1.AppController],
